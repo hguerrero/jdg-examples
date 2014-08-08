@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+   This is just a very simplistic example configuration file.  For more information, please see
+   http://docs.jboss.org/infinispan/5.0/apidocs/config.html
+
+-->
+
+<infinispan
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="urn:infinispan:config:5.2 http://www.infinispan.org/schemas/infinispan-config-5.2.xsd"
+      xmlns="urn:infinispan:config:5.2">
+
+   <global>
+      <globalJmxStatistics enabled="true" jmxDomain="Infinispan"/>
+      <transport clusterName="clustered">
+      	<properties>
+        	<property name="configurationFile" value="jgroups-tcp.xml" />
+        </properties>
+      </transport>
+   </global>
+
+   <default>
+      <locking concurrencyLevel="5000" />
+      <jmxStatistics enabled="true"/>
+      <!-- Configure a synchronous replication cache -->
+      <clustering mode="dist">
+      	<sync/>
+      </clustering>
+   </default>
+
+	<namedCache name="cityCache">
+		<indexing enabled="true" indexLocalOnly="true">
+		   <properties>
+		      <property name="default.directory_provider" value="infinispan" />
+		      <property name="default.exclusive_index_use" value="false"/>
+		   </properties>
+		</indexing>
+	    <loaders passivation="false" shared="true" preload="true">
+			<!--
+			   We can have multiple cache loaders, which get chained
+			-->
+			<loader class="org.infinispan.loaders.jpa.JpaCacheStore" >
+			
+			   <!-- See the documentation for more configuration examples and flags. -->
+			   <properties>
+			      <property name="persistenceUnitName" value="JPACacheStore"/>
+			      <property name="entityClassName" value="com.jboss.samples.datagrid.websample.model.City"/>
+			   </properties>
+			</loader>
+	    </loaders>
+	</namedCache>
+
+	<namedCache name="countryCache">
+		<indexing enabled="true" indexLocalOnly="true">
+		   <properties>
+		      <!-- Write indexes in Infinispan -->
+		      <property name="default.directory_provider" value="infinispan" />
+		      <property name="default.chunk_size" value="128000" />
+              <property name="default.metadata_cachename" value="LuceneIndexesMetadataOWR" />
+              <property name="default.data_cachename" value="LuceneIndexesDataOWR" />  
+		      <property name="default.exclusive_index_use" value="false"/>
+		      <!-- The default is 10, but we don't want to waste many cycles in merging
+                 (tune for writes at cost of reader fragmentation) -->
+              <property name="default.indexwriter.merge_factor" value="30" />
+              <!-- Never create segments larger than 1GB -->
+              <property name="default.indexwriter.merge_max_size" value="1024" />
+              <!-- IndexWriter flush buffer size in MB -->
+              <property name="default.indexwriter.ram_buffer_size" value="64" />
+              <!-- Make sure to use native locking -->
+              <property name="default.​locking_strategy" value="native" />
+              <!-- No need to be backwards compatible regarding Lucene version -->
+              <property name="lucene_version" value="LUCENE_36" />
+		   </properties>
+		</indexing>
+	    <loaders passivation="false" shared="true" preload="true">
+			<!--
+			   We can have multiple cache loaders, which get chained
+			-->
+			<loader class="org.infinispan.loaders.jpa.JpaCacheStore" >
+			
+			   <!-- See the documentation for more configuration examples and flags. -->
+			   <properties>
+			      <property name="persistenceUnitName" value="JPACacheStore"/>
+			      <property name="entityClassName" value="com.jboss.samples.datagrid.websample.model.Country"/>
+			   </properties>
+			</loader>
+	    </loaders>
+	</namedCache>
+
+	<!-- *************************************** -->
+    <!--  Cache to store Lucene's file metadata  -->
+    <!-- *************************************** -->
+    <namedCache name="LuceneIndexesMetadataOWR" />
+
+    <!-- **************************** -->
+    <!--  Cache to store Lucene data  -->
+    <!-- **************************** -->
+    <namedCache name="LuceneIndexesDataOWR" />
+        
+</infinispan>
