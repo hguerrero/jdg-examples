@@ -18,7 +18,7 @@
       <globalJmxStatistics enabled="true" jmxDomain="Infinispan"/>
       <transport clusterName="clustered">
       	<properties>
-        	<property name="configurationFile" value="jgroups-tcp.xml" />
+        	<property name="configurationFile" value="default-configs/default-jgroups-tcp.xml" />
         </properties>
       </transport>
    </global>
@@ -44,7 +44,7 @@
 			<jpaStore xmlns="urn:infinispan:config:jpa:6.0"
                   shared="false" preload="true"
                   persistenceUnitName="JPACacheStore"
-                  entityClassName="com.jboss.samples.datagrid.websample.model.City"
+                  entityClassName="mx.redhat.datagrid.demo.websample.model.City"
                   storeMetadata="false">
         	</jpaStore>
 		</persistence>
@@ -78,7 +78,7 @@
 			<jpaStore xmlns="urn:infinispan:config:jpa:6.0"
                   shared="false" preload="false"
                   persistenceUnitName="JPACacheStore"
-                  entityClassName="com.jboss.samples.datagrid.websample.model.Country"
+                  entityClassName="mx.redhat.datagrid.demo.websample.model.Country"
                   storeMetadata="false">
         	</jpaStore>
 		</persistence>

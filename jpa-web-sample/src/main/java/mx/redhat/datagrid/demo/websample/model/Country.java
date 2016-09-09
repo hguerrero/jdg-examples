@@ -1,4 +1,4 @@
-package com.jboss.samples.datagrid.websample.model;
+package mx.redhat.datagrid.demo.websample.model;
 
 import java.io.Serializable;
 import java.math.BigDecimal;

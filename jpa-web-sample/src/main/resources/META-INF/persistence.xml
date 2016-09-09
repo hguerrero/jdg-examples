@@ -24,8 +24,8 @@
       <description>JPA CacheStore Persistence Unit</description>
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       <non-jta-data-source>java:jboss/datasources/JDGWebSampleDS</non-jta-data-source>
-      <class>com.jboss.samples.datagrid.websample.model.City</class>
-      <class>com.jboss.samples.datagrid.websample.model.Country</class>
+      <class>mx.redhat.datagrid.demo.websample.model.City</class>
+      <class>mx.redhat.datagrid.demo.websample.model.Country</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.show_sql" value="false" />
@@ -47,8 +47,8 @@
       <!-- 
       <jta-data-source>java:jboss/datasources/JDGWebSampleDS</jta-data-source>
        -->
-      <class>com.jboss.samples.datagrid.websample.model.City</class>
-      <class>com.jboss.samples.datagrid.websample.model.Country</class>
+      <class>mx.redhat.datagrid.demo.websample.model.City</class>
+      <class>mx.redhat.datagrid.demo.websample.model.Country</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.show_sql" value="false" />

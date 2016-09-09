@@ -1,4 +1,4 @@
-package com.jboss.samples.datagrid.websample.service.mapper;
+package mx.redhat.datagrid.demo.websample.service.mapper;
 
 import java.util.Iterator;
 

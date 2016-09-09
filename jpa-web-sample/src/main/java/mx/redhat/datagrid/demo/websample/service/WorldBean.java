@@ -1,4 +1,4 @@
-package com.jboss.samples.datagrid.websample.service;
+package mx.redhat.datagrid.demo.websample.service;
 
 import java.util.List;
 import java.util.logging.Logger;
@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.jboss.samples.datagrid.websample.model.Country;
+import mx.redhat.datagrid.demo.websample.model.Country;
 
 @Stateless
 public class WorldBean 

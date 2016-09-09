@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jboss.samples.datagrid.websample.rest;
+package mx.redhat.datagrid.demo.websample.rest;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -33,9 +33,9 @@ import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.jboss.samples.datagrid.websample.model.Country;
-import com.jboss.samples.datagrid.websample.service.WorldBean;
-import com.jboss.samples.datagrid.websample.service.WorldListing;
+import mx.redhat.datagrid.demo.websample.model.Country;
+import mx.redhat.datagrid.demo.websample.service.WorldBean;
+import mx.redhat.datagrid.demo.websample.service.WorldListing;
 
 /**
  * JAX-RS Example

@@ -1,4 +1,4 @@
-package com.jboss.samples.datagrid.websample.service;
+package mx.redhat.datagrid.demo.websample.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,9 +18,9 @@ import org.infinispan.query.ResultIterator;
 import org.infinispan.query.Search;
 import org.infinispan.query.SearchManager;
 
-import com.jboss.samples.datagrid.websample.model.Country;
-import com.jboss.samples.datagrid.websample.service.mapper.RegionNameMapper;
-import com.jboss.samples.datagrid.websample.service.mapper.RegionNameReducer;
+import mx.redhat.datagrid.demo.websample.model.Country;
+import mx.redhat.datagrid.demo.websample.service.mapper.RegionNameMapper;
+import mx.redhat.datagrid.demo.websample.service.mapper.RegionNameReducer;
 
 
 public class WorldListing {

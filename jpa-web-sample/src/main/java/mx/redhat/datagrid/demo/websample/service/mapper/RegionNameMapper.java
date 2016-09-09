@@ -1,9 +1,9 @@
-package com.jboss.samples.datagrid.websample.service.mapper;
+package mx.redhat.datagrid.demo.websample.service.mapper;
 
 import org.infinispan.distexec.mapreduce.Collector;
 import org.infinispan.distexec.mapreduce.Mapper;
 
-import com.jboss.samples.datagrid.websample.model.Country;
+import mx.redhat.datagrid.demo.websample.model.Country;
 
 @SuppressWarnings("serial")
 public class RegionNameMapper implements Mapper<String, Country, String, Integer> {

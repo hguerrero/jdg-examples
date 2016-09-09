@@ -14,20 +14,36 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.jboss.samples.datagrid.websample.rest;
+package mx.redhat.datagrid.demo.websample.util;
 
-import javax.ws.rs.ApplicationPath;
-import javax.ws.rs.core.Application;
+import java.util.logging.Logger;
+
+import javax.enterprise.inject.Produces;
+import javax.enterprise.inject.spi.InjectionPoint;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
- * A class extending {@link Application} and annotated with @ApplicationPath is the Java EE 6 "no XML" approach to activating
- * JAX-RS.
+ * This class uses CDI to alias Java EE resources, such as the persistence context, to CDI beans
  * 
  * <p>
- * Resources are served relative to the servlet path specified in the {@link ApplicationPath} annotation.
+ * Example injection on a managed bean field:
  * </p>
+ * 
+ * <pre>
+ * &#064;Inject
+ * private EntityManager em;
+ * </pre>
  */
-@ApplicationPath("/rest")
-public class JaxRsActivator extends Application {
-    /* class body intentionally left blank */
+public class Resources {
+
+    @Produces
+    @PersistenceContext(unitName="nocache")
+    private EntityManager em;
+
+    @Produces
+	public Logger produceLog(InjectionPoint injectionPoint) {
+		return Logger.getLogger(injectionPoint.getMember().getDeclaringClass().getName());
+	}
+
 }
