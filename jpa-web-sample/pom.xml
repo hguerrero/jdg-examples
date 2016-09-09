@@ -20,10 +20,10 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.jboss.samples.datagrid</groupId>
-    <artifactId>datagrid-web-sample</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>jpa-web-sample</artifactId>
+    <version>1.0.0</version>
     <packaging>war</packaging>
-    <name>JDGWebSample</name>
+    <name>JPA Cache Web Sample</name>
     <description>A starter Java EE 6 webapp project for use on JBoss AS 7 / EAP 6, generated from the jboss-javaee6-webapp archetype</description>
 
     <url>http://jboss.org/jbossas</url>
@@ -59,6 +59,9 @@
             to work with JBoss EAP 6. It requires you have access to the JBoss EAP 6 
             maven repository. -->
         <version.jboss.spec.javaee.6.0>3.0.2.Final-redhat-3</version.jboss.spec.javaee.6.0>
+        
+        <version.jdg>6.1.1.Final-redhat-5</version.jdg>
+        
 
         <!-- other plugin versions -->
         <version.compiler.plugin>2.3.1</version.compiler.plugin>
@@ -94,6 +97,18 @@
                 <version>${version.jboss.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+			<dependency>
+				<groupId>org.infinispan</groupId>
+				<artifactId>infinispan-bom</artifactId>
+				<version>${version.jdg}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+			<dependency>
+                <groupId>dom4j</groupId>
+                <artifactId>dom4j</artifactId>
+                <version>1.6.1-redhat-5</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -152,6 +167,12 @@
             <artifactId>hibernate-jpamodelgen</artifactId>
             <scope>provided</scope>
         </dependency>
+        
+	  	<dependency>
+	  		<groupId>org.hibernate</groupId>
+	  		<artifactId>hibernate-entitymanager</artifactId>
+			<scope>provided</scope>
+	  	</dependency>
 
         <!-- Annotation processor that raising compilation errors whenever constraint 
             annotations are incorrectly used. -->
@@ -186,19 +207,16 @@
         <dependency>
         	<groupId>org.infinispan</groupId>
         	<artifactId>infinispan-query</artifactId>
-        	<version>5.2.4.Final-redhat-1</version>
         </dependency>
 
         <dependency>
         	<groupId>org.infinispan</groupId>
         	<artifactId>infinispan-cachestore-jpa</artifactId>
-        	<version>5.3.0.Final</version>
         </dependency>
 
         <dependency>
         	<groupId>org.infinispan</groupId>
         	<artifactId>infinispan-client-hotrod</artifactId>
-        	<version>5.2.4.Final-redhat-1</version>
         </dependency>
     </dependencies>
 

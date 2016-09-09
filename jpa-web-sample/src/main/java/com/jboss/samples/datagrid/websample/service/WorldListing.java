@@ -3,9 +3,9 @@ package com.jboss.samples.datagrid.websample.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.logging.Logger;
 
-import javax.ejb.Stateless;
 import javax.inject.Inject;
 
 import org.apache.lucene.search.Query;
@@ -23,7 +23,6 @@ import com.jboss.samples.datagrid.websample.service.mapper.RegionNameMapper;
 import com.jboss.samples.datagrid.websample.service.mapper.RegionNameReducer;
 
 
-@Stateless
 public class WorldListing {
 
 	@Inject
@@ -35,8 +34,18 @@ public class WorldListing {
 	public List<Country> listCountries() throws Exception 
 	{
 		Cache<String, Country> cache = provider.getCache("countryCache");
+		
+//		if (cache.size() != 0)
+//			cache = cache.getAdvancedCache().withFlags(Flag.SKIP_CACHE_LOAD);
 
-		List<Country> countries = new ArrayList<Country>(cache.values());
+//		Set<Entry<String, Country>> entries = cache.entrySet();
+		Set<String> entries = cache.keySet();
+		
+		List<Country> countries = new ArrayList<Country>();
+		
+		for (String entry : entries) {
+			countries.add(cache.get(entry));
+		}
 		
 		return countries;
 	}

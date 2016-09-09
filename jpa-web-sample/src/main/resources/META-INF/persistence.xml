@@ -20,21 +20,20 @@
    xsi:schemaLocation="
         http://java.sun.com/xml/ns/persistence
         http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-   <persistence-unit name="JPACacheStore">
+   <persistence-unit name="JPACacheStore" transaction-type="RESOURCE_LOCAL">
       <description>JPA CacheStore Persistence Unit</description>
       <provider>org.hibernate.ejb.HibernatePersistence</provider>
       <non-jta-data-source>java:jboss/datasources/JDGWebSampleDS</non-jta-data-source>
-      <!-- 
-      <jta-data-source>java:jboss/datasources/JDGWebSampleDS</jta-data-source>
-       -->
       <class>com.jboss.samples.datagrid.websample.model.City</class>
       <class>com.jboss.samples.datagrid.websample.model.Country</class>
       <properties>
          <!-- Properties for Hibernate -->
          <property name="hibernate.show_sql" value="false" />
 		 <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
-         <property name="hibernate.connection.autocommit" value="false"/>
+         <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.JTATransactionFactory"/>
+		 <property name="hibernate.transaction.jta.platform" value="org.hibernate.service.jta.platform.internal.JBossAppServerJtaPlatform"/>
          <!-- 
+         <property name="hibernate.connection.autocommit" value="false"/>
          <property name="hibernate.transaction.factory_class" value="org.hibernate.transaction.CMTTransactionFactory"/>
          <property name="hibernate.transaction.manager_lookup_class" value="org.hibernate.transaction.JBossTransactionManagerLookup"/>
          <property name="hibernate.current_session_context_class" value="jta"/>
