@@ -39,6 +39,7 @@ public class Persona implements Serializable
 	public void setPersona(String persona) {
 		this.persona = persona;
 	}
+	@ProtoDoc("@Field(analyze = Analyze.YES, store = Store.NO, norms = Norms.NO, termVector = TermVector.NO)")
 	@ProtoField(number = 2, required = true)
 	public String getNombre() {
 		return nombre;
@@ -46,6 +47,7 @@ public class Persona implements Serializable
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+	@ProtoDoc("@Field(analyze = Analyze.YES, store = Store.NO, norms = Norms.NO, termVector = TermVector.NO)")
 	@ProtoField(number = 3, required = true)
 	public String getApellidoPaterno() {
 		return apellido_paterno;
@@ -53,6 +55,7 @@ public class Persona implements Serializable
 	public void setApellidoPaterno(String apellido_paterno) {
 		this.apellido_paterno = apellido_paterno;
 	}
+	@ProtoDoc("@Field(analyze = Analyze.YES, store = Store.NO, norms = Norms.NO, termVector = TermVector.NO)")
 	@ProtoField(number = 4, required = true)
 	public String getApellidoMaterno() {
 		return apellido_materno;
@@ -60,6 +63,7 @@ public class Persona implements Serializable
 	public void setApellidoMaterno(String apellido_materno) {
 		this.apellido_materno = apellido_materno;
 	}
+	@ProtoDoc("@Field(analyze = Analyze.YES, store = Store.NO, norms = Norms.NO, termVector = TermVector.NO)")
 	@ProtoField(number = 5, required = true)
 	public String getRFC() {
 		return rfc;

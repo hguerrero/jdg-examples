@@ -50,6 +50,11 @@ public class RemoteCacheQuery
 			throw new IllegalStateException("Some Protobuf schema files contain errors:\n" + errors);
 		}
 		
+		RemoteCache<String, Persona> remoteCache = remoteCacheManager.getCache("test");
+		
+		Persona persona1 = new Persona("0002","Juan", "Perez", "Perez", "PEPJ080808");
+		remoteCache.put(persona1.getPersona(), persona1);
+
 	}
 
 }
